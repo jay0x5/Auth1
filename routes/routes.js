@@ -43,8 +43,7 @@ router.post('/createuser',async(req,res) =>{
     const jtoken = jwt.sign({email:email,password:hashpass}, process.env.SEC);
 
     
-    
-        
+    //send the data to MongoDB
     try{
         const userdata = await usermodel.create({email,hashpass,jtoken})
         res.status(200).json(userdata)
