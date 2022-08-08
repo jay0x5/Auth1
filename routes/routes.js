@@ -36,8 +36,10 @@ router.post('/createuser',async(req,res) =>{
   
     const {email,password} = req.body
 
+    //hash and prep the password
     const hashpass = bcrypt.hashSync(password, 10);
 
+    //prep a jwt
     const jtoken = jwt.sign({email:email,password:hashpass}, process.env.SEC);
 
     
